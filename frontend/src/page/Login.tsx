@@ -25,7 +25,7 @@ export default function Login() {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-950 flex items-center justify-center p-4">
       <div className="w-full max-w-md bg-white rounded-3xl p-8 shadow-2xl transition-all">
         <div className="text-center mb-8">
-          <div className="h-12 w-12 bg-indigo-600 rounded-2xl mx-auto flex items-center justify-center font-black text-xl text-white shadow-xl shadow-indigo-600/30 mb-3">
+          <div className="h-12 w-12 text-slate-400 rounded-2xl mx-auto flex items-center justify-center font-black text-xl bg-white shadow-xl shadow-indigo-600/30 mb-3">
             A
           </div>
           <h2 className="text-2xl font-bold text-slate-800">Sistem Absensi</h2>
