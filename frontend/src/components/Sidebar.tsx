@@ -47,11 +47,11 @@ export default function Sidebar() {
     <div className="w-64 bg-brand-dark min-h-screen text-white flex flex-col justify-between shadow-xl">
       <div className="p-5">
         <div className="flex items-center gap-3 mb-8">
-          <div className="h-10 w-10 bg-brand-primary rounded-xl flex items-center justify-center font-bold text-lg text-white shadow-lg shadow-indigo-500/30">
+          <div className="h-10 w-10 bg-brand-primary rounded-xl flex items-center justify-center font-bold text-lg text-slate-400 shadow-lg shadow-indigo-500/30">
             A
           </div>
           <div>
-            <h1 className="font-bold text-lg tracking-wide">ATTENDIFY</h1>
+            <h1 className="font-bold text-lg text-slate-400 tracking-wide">ATTENDIFY</h1>
             <p className="text-xs text-slate-400 capitalize">
               {user.role} Panel
             </p>
@@ -68,7 +68,7 @@ export default function Sidebar() {
                   className={({ isActive }) =>
                     `flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-200 ${
                       isActive
-                        ? "bg-brand-primary text-white shadow-md shadow-indigo-600/20 font-semibold"
+                        ? "bg-brand-primary text-black/50 shadow-md shadow-indigo-600/20 font-semibold"
                         : "text-slate-400 hover:bg-slate-800 hover:text-slate-200"
                     }`
                   }
