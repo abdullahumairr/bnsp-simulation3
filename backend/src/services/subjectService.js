@@ -1,7 +1,6 @@
 const db = require("../config/db");
 
 exports.getAllSubjects = async () => {
-  // Query ini menggabungkan tabel subjects dan users untuk mendapatkan nama guru pengampu
   const [rows] = await db.query(`
     SELECT s.*, u.name AS teacher_name 
     FROM subjects s 
@@ -18,7 +17,6 @@ exports.createSubject = async (data) => {
   return { id: result.insertId, ...data };
 };
 
-// UPDATE: Menjalankan query pembaruan mata pelajaran ke MySQL (Baru)
 exports.updateSubject = async (id, data) => {
   await db.query(
     "UPDATE subjects SET code = ?, name = ?, teacher_id = ? WHERE id = ?",

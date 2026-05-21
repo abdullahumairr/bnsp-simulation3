@@ -1,6 +1,5 @@
 const subjectService = require("../services/subjectService");
 
-// Mendapatkan semua mata pelajaran
 exports.getSubjects = async (req, res) => {
   try {
     const subjects = await subjectService.getAllSubjects();
@@ -10,7 +9,6 @@ exports.getSubjects = async (req, res) => {
   }
 };
 
-// Menambah mata pelajaran baru
 exports.createSubject = async (req, res) => {
   try {
     const subject = await subjectService.createSubject(req.body);
@@ -20,7 +18,6 @@ exports.createSubject = async (req, res) => {
   }
 };
 
-// UPDATE: Mengubah data mata pelajaran (Baru)
 exports.updateSubject = async (req, res) => {
   try {
     const subject = await subjectService.updateSubject(req.params.id, req.body);
@@ -30,7 +27,6 @@ exports.updateSubject = async (req, res) => {
   }
 };
 
-// Menghapus mata pelajaran
 exports.deleteSubject = async (req, res) => {
   try {
     await subjectService.deleteSubject(req.params.id);

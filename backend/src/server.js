@@ -13,14 +13,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Main Routes Mapping
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/subjects", subjectRoutes);
 app.use("/api/attendances", attendanceRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 
-// Global Error Catching Middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res

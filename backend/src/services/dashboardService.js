@@ -10,7 +10,6 @@ exports.getStats = async (user) => {
   stats.totalSubjects = sCount[0].total;
   stats.totalAttendances = aCount[0].total;
 
-  // Struktur Chart (Data kehadiran)
   const [chartData] = await db.query(`
     SELECT status, COUNT(*) as count 
     FROM attendances 

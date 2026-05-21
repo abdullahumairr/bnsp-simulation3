@@ -17,14 +17,12 @@ export default function Subjects() {
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [teachers, setTeachers] = useState<Teacher[]>([]);
 
-  // STATE BARU: Untuk menyimpan status jika Admin sedang mengedit data
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [editingId, setEditingId] = useState<number | null>(null);
 
   const user = JSON.parse(localStorage.getItem("user") || "{}");
   const { register, handleSubmit, reset, setValue } = useForm();
 
-  // Ambil Data Mata Pelajaran
   const fetchSubjects = async () => {
     try {
       const res = await api.get("/subjects");
@@ -34,7 +32,6 @@ export default function Subjects() {
     }
   };
 
-  // Ambil Data Guru untuk Dropdown
   const fetchTeachers = async () => {
     try {
       const res = await api.get("/users?role=guru");
@@ -54,15 +51,12 @@ export default function Subjects() {
     }
   }, []);
 
-  // Handle Create & Update Data
   const onSubmit = async (data: { [key: string]: string }) => {
     try {
       if (isEditing && editingId) {
-        // JIKA SEDANG EDIT: Panggil API PUT ke /subjects/:id
         await api.put(`/subjects/${editingId}`, data);
         toast.success("Mata pelajaran berhasil diperbarui");
       } else {
-        // JIKA TAMBAH BARU: Panggil API POST
         await api.post("/subjects", data);
         toast.success("Mata pelajaran berhasil ditambah");
       }
@@ -77,18 +71,15 @@ export default function Subjects() {
     }
   };
 
-  // Fungsi saat tombol Edit di tabel diklik
   const handleEditClick = (sub: Subject) => {
     setIsEditing(true);
     setEditingId(sub.id);
 
-    // Set nilai form sesuai data mata pelajaran yang dipilih
     setValue("code", sub.code);
     setValue("name", sub.name);
     setValue("teacher_id", sub.teacher_id);
   };
 
-  // Fungsi membatalkan mode edit
   const cancelEdit = () => {
     setIsEditing(false);
     setEditingId(null);
@@ -96,7 +87,6 @@ export default function Subjects() {
     setValue("teacher_id", "");
   };
 
-  // Handle Delete Data
   const handleDelete = async (id: number) => {
     if (confirm("Hapus mapel ini?")) {
       try {
@@ -223,7 +213,6 @@ export default function Subjects() {
                   </td>
                   {user.role !== "siswa" && (
                     <td className="py-3.5 px-4 text-center flex justify-center gap-1">
-                      {/* TOMBOL EDIT BARU (Hanya muncul jika bukan siswa) */}
                       <button
                         onClick={() => handleEditClick(sub)}
                         className="p-2 text-amber-500 hover:bg-amber-50 rounded-xl transition-all"
